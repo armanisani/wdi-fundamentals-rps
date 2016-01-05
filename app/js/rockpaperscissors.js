@@ -34,39 +34,44 @@ function getComputerMove(move) {
 }
 
 function getWinner(playerMove,computerMove) {
-    var winner = 0;
+    var winner;
     if (playerMove === 'rock') {
         if (computerMove === 'rock') {
-	    winner = "tie";
-	}
+            winner = "tie";
+        }
         else if (computerMove === 'scissors') {
-	    winner = "player";
-	}
-	else if (computerMove === 'paper') {
-	    winner = "computer";
-	}
+            winner = "player";
+        }
+        else if (computerMove === 'paper') {
+            winner = "computer";
+            
+        }
     }
     else if (playerMove === 'paper') {
         if (computerMove === 'rock') {
-	    winner = "player";
-	}
-	else if (computerMove === 'paper') {
-	    winner = "tie";
-	}
-	else {
-	    winner = "computer";
-	}
+            winner = "player";
+            
+        }
+        else if (computerMove === 'paper') {
+            winner = "tie";
+            
+        }
+        else {
+            winner = "computer";
+            
+        }
+        
     }
     else if (playerMove === 'scissors') {
         if (computerMove === 'rock') {
-	    winner = "player";
-	}
-	else if (computerMove === 'paper') {
+            winner = "computer";
+        }
+        else if (computerMove === 'paper') {
+            winner = "player";
+        }
+        else {
 	    winner = "tie";
-	}
-	else {
-	    winner = "computer";
-	}
+        }
     }
     return winner;
 }
@@ -75,28 +80,31 @@ function playToFive() {
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
-    var playerMove = getPlayerMove();
-    var computerMove = getComputerMove();
     while((playerWins <5) && (computerWins <5)) {
-        winner = getWinner(getPlayerMove(),getComputerMove())
+        var playerMove = getPlayerMove();
+        var computerMove = getComputerMove();
+        winner = getWinner(playerMove,computerMove)
         if ( winner === "computer") {
-	    computerWins += 1;
-	    console.log("Computer won! Computer chose " + computerMove + " while Player chose " + playerMove + ". Player has " + playerWins + " wins and computer has " + computerWins + " wins!" );
-	}
-	else if (winner === "player") {
-	    playerWins += 1;
-	    console.log("Player won! Player chose " + playerMove + " while Computer chose " + computerMove + ". Player has " + playerWins + " wins and computer has " + computerWins + " wins!" );
-	}
-	else {
-	    console.log("That was a tie! Both chose " + playerMove + ".");
-	}	
+            computerWins += 1;
+            console.log("Computer won! Computer chose " + computerMove + " while Player chose " + playerMove + ". Player has " + playerWins + " wins and computer has " + computerWins + " wins!" );
+            
+        }
+        else if (winner === "player") {
+            playerWins += 1;
+            console.log("Player won! Player chose " + playerMove + " while Computer chose " + computerMove + ". Player has " + playerWins + " wins and computer has " + computerWins + " wins!" );
+            
+        }
+        else {
+            console.log("That was a tie! Both chose " + playerMove + ".");
+            
+        }	
     }
     if(playerWins === 5) {
-	console.log("Player Wins the game with " + playerWins + " wins! Computer had " + computerWins + "!")
+        console.log("Player Wins the game with " + playerWins + " wins! Computer had " + computerWins + "!");
     }
     else if (computerWins ===5) {
-	console.log("Computer wins the game with " + computerWins + " wins! Player had " + playerWins + "!")
+        console.log("Computer wins the game with " + computerWins + " wins! Player had " + playerWins + "!");
     }
     return [playerWins, computerWins];
+    
 }
-
