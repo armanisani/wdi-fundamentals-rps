@@ -78,14 +78,14 @@ function playToFive() {
     while((playerWins <5) || (computerWins <5)) {
         if (getWinner() === "computer") {
 	    computerWins += 1;
-	    console.log("Computer won!");
+	    console.log("Computer won! Computer chose " + computerMove + "while Player chose " + playerMove + ".");
 	}
 	else if (getWinner() === "player") {
 	    playerWins += 1;
-	    console.log("Player won!");
+	    console.log("Player won! Player chose " + playerMove + "while Computer chose " + computerMove + "." );
 	}
 	else {
-	    console.log("That was a tie!");
+	    console.log("That was a tie! Both chose " + playerMove + ".");
 	}	
     }
     return [playerWins, computerWins];
